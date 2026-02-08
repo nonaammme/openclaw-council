@@ -61,6 +61,26 @@ openclaw plugins enable openclaw-council
 openclaw gateway restart
 ```
 
+## Use as a native slash command
+
+After plugin install, run:
+
+```text
+/council <your query>
+```
+
+Example:
+
+```text
+/council Build a 14-day GTM plan for OpenClaw Council
+```
+
+The plugin executes the full council pipeline and writes:
+- `run.json`
+- `report.md`
+
+in the plugin directory.
+
 ## One-command local install (skill-style copy)
 
 ```bash

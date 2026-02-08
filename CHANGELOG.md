@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.2.0 - 2026-02-08
+
+### Added
+- Native plugin slash command: `/council <query>`
+- In-plugin command execution flow (runs `council.py` + `render_report.py`)
+- Improved user feedback for command usage and run completion
+
+### Changed
+- Bumped plugin/package version to `0.2.0`
+- README updated with slash-command usage
+
 ## 0.1.0 - 2026-02-08
 
 Initial public release.
