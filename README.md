@@ -1,70 +1,93 @@
-# OpenClaw Council (pluggable)
+# OpenClaw Council
 
-Council-движок с **подключаемыми ролями** и **произвольным числом моделей/API**.
+Pluggable **Council mode** for OpenClaw: run multiple role prompts (and optionally multiple model providers) in parallel, then synthesize one final answer with explicit agreement/disagreement and risk mapping.
 
-## Что умеет
-- Любое число ролей (файлы в `roles/*.md`)
-- Любое число провайдеров/моделей (конфиг `council.config.json`)
-- Параллельный 1-й раунд (все роли)
-- Раунд критики (каждая роль критикует агрегированный черновик)
-- Финальный синтез (отдельная роль `synthesizer`)
-- Прозрачный JSON-вывод: agree/disagree/risks/confidence
+> This project is an **OpenClaw plugin/overlay**, not a fork of the OpenClaw core runtime.
 
-## Быстрый старт
+## Why
+
+Single-model answers can be fast but brittle. Council mode adds structured cross-checking:
+
+- Parallel role perspectives (`analyst`, `skeptic`, `builder`, etc.)
+- Critique round to expose weak assumptions
+- Final synthesis into one actionable answer
+- Transparent output (`agreement_points`, `disagreement_points`, `risks`, `confidence`)
+
+## Features
+
+- Unlimited pluggable roles (`roles/*.md`)
+- Multi-provider support via OpenAI-compatible Chat Completions endpoints
+- Parallel round-1 + critique round + synthesis round
+- Structured JSON output + markdown report renderer
+- Safe local config model (secrets only via env vars)
+
+## Repository layout
+
+- `council.py` — orchestration engine
+- `render_report.py` — converts `run.json` to `report.md`
+- `roles/` — role prompt packs
+- `examples/council.config.example.json` — starter config template
+- `schemas/council-output.schema.json` — output contract
+- `openclaw.plugin.json` — plugin manifest
+- `skills/openclaw-council/SKILL.md` — skill instructions
+
+## Requirements
+
+- Python 3.10+
+- OpenClaw CLI installed and configured
+- Provider API keys (for live mode)
+
+## Quick start (local run)
+
 ```bash
-cd ideas/openclaw-council
 cp examples/council.config.example.json council.config.json
-python3 council.py run --query "Сделай план запуска продукта за 14 дней" --config council.config.json --out run.json
+# edit provider/model values if needed
+
+python3 council.py run \
+  --query "Build a 14-day go-to-market plan for an OpenClaw plugin" \
+  --config council.config.json \
+  --out run.json
+
+python3 render_report.py --infile run.json --out report.md
 ```
 
-## Подключение новых ролей
-1. Добавь файл `roles/<name>.md` (инструкция роли).
-2. Добавь роль в `council.config.json`.
+## Install as OpenClaw plugin
 
-## Подключение новых API
-Поддержан OpenAI-compatible Chat Completions endpoint:
-- OpenAI
-- OpenRouter
-- локальные шлюзы (vLLM, LM Studio, etc.)
-
-Просто добавь новый provider в конфиг.
-
-## Формат вывода
-См. `schemas/council-output.schema.json`
-
-
-## Security / secrets
-- Ключи храним только в env-переменных.
-- Файл `council.config.json` локальный и в git не коммитится.
-- Перед пушем проверь: `git status` и что нет файлов с ключами.
-
-## Install as OpenClaw skill (local)
 ```bash
-# положить папку в ваш каталог skills и запускать команды из SKILL.md
-```
-
-
-## One-command local install
-```bash
-bash install.sh
-```
-Installs into `~/.openclaw/skills/openclaw-council`.
-
-
-## Install as OpenClaw plugin (recommended)
-```bash
-# after cloning this repo
+git clone https://github.com/Personaz1/openclaw-council.git
+cd openclaw-council
 openclaw plugins install .
 openclaw plugins enable openclaw-council
 openclaw gateway restart
 ```
 
-Then run the council skill from:
-`skills/openclaw-council/SKILL.md`
+## One-command local install (skill-style copy)
 
-## Install directly from GitHub source
 ```bash
-git clone https://github.com/Personaz1/openclaw-council.git
-cd openclaw-council
-openclaw plugins install .
+bash install.sh
 ```
+
+Installs into `~/.openclaw/skills/openclaw-council`.
+
+## Security and secrets
+
+- Keep API keys in environment variables only.
+- Do **not** commit `council.config.json`, `run.json`, or `report.md`.
+- Use `.env.example` as a template only.
+
+## Add a new role
+
+1. Create `roles/<role-name>.md`
+2. Add it under `roles[]` in `council.config.json`
+
+## Add a new provider
+
+Add provider settings to `providers{}` in config:
+
+- `base_url` (OpenAI-compatible endpoint)
+- `api_key_env` (environment variable name)
+- `model`
+
+## License
+
+MIT
